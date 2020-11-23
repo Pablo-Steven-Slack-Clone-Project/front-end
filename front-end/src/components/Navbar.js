@@ -11,18 +11,17 @@ import CodeIcon from "@material-ui/icons/Code";
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 
-const theme = createMuiTheme({
-  palette: {
-    primary: {
-        main: '#3d9630',
-        contrastText: '#000000',
-    }
-  },
-});
+// const theme = createMuiTheme({
+//   palette: {
+//     primary: {
+//         main: '#3d9630',
+//         contrastText: '#000000',
+//     }
+//   },
+// });
 
 
-
-const useStyles = makeStyles({
+const useStyles = makeStyles({  
     navDisplayFlex: {
       display: `flex`,
       justifyContent: `space-evenly`
@@ -34,6 +33,9 @@ const useStyles = makeStyles({
       linkText: {
       textDecoration: `none`,
       color: `white`
+    },
+    steveClass:{
+      backgroundColor:'#3d9630'
     }
   });
 
@@ -47,10 +49,10 @@ const NavBar = () => {
     // const theme = useTheme()
   return (
     <>
-    <AppBar position="static">
+    <AppBar position="static" className={classes.steveClass}>
         <Toolbar>
         <Container className={classes.navHomeFlex}>    
-        <IconButton edge="start"color="inherit" aria-label="Homepage">
+        <IconButton edge="start" color="inherit" aria-label="Homepage">
             H
             <CodeIcon fontSize="medium" />
             me
