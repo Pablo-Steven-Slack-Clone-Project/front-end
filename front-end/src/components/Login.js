@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { TextField, Button } from "@material-ui/core";
 import * as yup from "yup";
 import schema from "../utils/schema.js";
+import {useHistory} from 'react-router-dom'
+import fireApp from '../base'
 
 const defaultValues = {
   email: "",
@@ -14,6 +16,8 @@ const defaultErrors = {
 };
 
 const Login = () => {
+  const history = useHistory()
+
   const [values, setValues] = useState(defaultValues);
   const [errors, setErrors] = useState(defaultErrors);
 
@@ -25,7 +29,6 @@ const Login = () => {
         setErrors({ ...errors, [name]: "" });
       })
       .catch((err) => {
-        console.log(err);
         setErrors({ ...errors, [name]: err.message });
       });
   };
@@ -35,8 +38,24 @@ const Login = () => {
     validate(name, value);
     setValues({ ...values, [name]: value });
   };
+
+  const submitLogin = async (evt) => {
+        evt.preventDefault();
+        const { email, password } = evt.target.elements;
+        console.log('event values', evt.target.elements)
+        try {
+          await fireApp
+            .auth()
+            .signInWithEmailAndPassword(email.value, password.value);
+          history.push("/chatroom");
+        } 
+        catch (error) {
+          alert(error);
+        }
+      }
+    
   return (
-    <form>
+    <form onSubmit={submitLogin}>
       <TextField
         name="email"
         label="Email"
@@ -60,7 +79,6 @@ const Login = () => {
         onChange={onChange}
         value={values.password}
       />
-      
       <Button type="submit" variant="outlined" size='small' fullWidth>
         Sign In
       </Button>

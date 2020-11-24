@@ -1,17 +1,23 @@
-import React from "react";
+import React,{useContext} from "react";
 import { Route, Redirect } from "react-router-dom";
+import { AuthContext } from "./Auth"
 
-const PrivateRoute = ({ component: Component, ...rest }) => {
+const PrivateRoute = ({ component: RouteComponent, ...rest }) => {
+  const {currentUser} = useContext(AuthContext)
+
   return (
     <Route
       {...rest}
-      render={(props) => {
-        if (window.localStorage.getItem("token")) {
-          return <Component {...props} />;
-        } else {
-          return <Redirect to="/Signup" />;
-        }
-      }}
+      render={routeProps => 
+      !!currentUser ? 
+        (
+          <RouteComponent {...routeProps} />
+        ) 
+      : 
+        (
+          <Redirect to="/" />
+        )
+      }
     />
   );
 };

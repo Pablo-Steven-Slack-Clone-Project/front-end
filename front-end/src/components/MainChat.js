@@ -5,7 +5,7 @@ const useStyles = makeStyles((theme) => ({
     mainChatContainer: {
         position: "relative",
         border: "0.5px solid black",
-        paddingBottom: "40%",
+        paddingBottom: "20%",
         display: "flex",
         flexDirection: "column",
         alignItems: "flex-start"
