@@ -4,16 +4,18 @@ import NavBar from './components/Navbar'
 // import PrivateRoute from '../src/components/PrivateRoute.js'
 import ChannelBar from '../src/components/ChannelBar.js'
 import MainChat from '../src/components/MainChat.js'
+import Homepage from './components/Homepage.js'
 import './App.css';
 
 function App() {
   return (
     <>
-    <NavBar />
+    <Homepage />
+    {/* <NavBar />
     <ChannelBar />
     <div>
     <MainChat />
-    </div>
+    </div> */}
      <h1>Nothing to see here Render</h1>
     </>
   );
