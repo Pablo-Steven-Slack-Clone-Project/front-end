@@ -13,30 +13,30 @@ import AddIcon from '@material-ui/icons/Add';
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    display: 'flex',
-  },
+//   root: {
+//     display: 'flex',
+//   },
   appBar: {
     width: `calc(100% - ${drawerWidth}px)`,
     marginLeft: drawerWidth,
   },
   drawer: {
     width: drawerWidth,
-    flexShrink: 0,
+    // flexShrink: 0,
   },
   drawerPaper: {
     width: drawerWidth,
   },
   wrapIcon: {
-    display: 'flex',
+    // display: 'flex',
     alignItems: 'center',
-    flexWrap: 'wrap',
+    // flexWrap: 'wrap',
     fontWeight: "bold",
     fontSize: "1.5rem"
    },
   toolbar: theme.mixins.toolbar,
   content: {
-    flexGrow: 1,
+    // flexGrow: 1,
     backgroundColor: theme.palette.background.default,
     padding: theme.spacing(3),
   },
@@ -57,6 +57,7 @@ const ChannelBar = () => {
           paper: classes.drawerPaper,
         }}
         anchor="left"
+        position="relative"
       >
         <div className={classes.toolbar} />
         <h2>Channel Search</h2>
