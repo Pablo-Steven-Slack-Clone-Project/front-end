@@ -1,5 +1,5 @@
 import React from 'react';
-//import { Route, Redirect } from 'react-router-dom'
+import { Route, Redirect } from 'react-router-dom'
 import NavBar from './components/Navbar'
 // import PrivateRoute from '../src/components/PrivateRoute.js'
 import ChannelBar from '../src/components/ChannelBar.js'
@@ -10,13 +10,14 @@ import './App.css';
 function App() {
   return (
     <>
-    <Homepage />
-    {/* <NavBar />
-    <ChannelBar />
-    <div>
-    <MainChat />
-    </div> */}
-     <h1>Nothing to see here Render</h1>
+    <Route exact path='/'>
+      <Homepage />
+    </Route>
+    <Route path='/chatroom'>
+      <NavBar />
+      <ChannelBar />
+      <MainChat />
+    </Route>
     </>
   );
 }
