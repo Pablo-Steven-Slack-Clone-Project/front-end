@@ -5,21 +5,11 @@ import { AppBar, IconButton, Toolbar } from "@material-ui/core";
 import { List, ListItem, ListItemText } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles"
 import { Container } from "@material-ui/core"
-import { createMuiTheme } from '@material-ui/core/styles';
 
 import CodeIcon from "@material-ui/icons/Code";
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import zIndex from "@material-ui/core/styles/zIndex";
-
-// const theme = createMuiTheme({
-//   palette: {
-//     primary: {
-//         main: '#3d9630',
-//         contrastText: '#000000',
-//     }
-//   },
-// });
 
 
 const useStyles = makeStyles({  
@@ -35,8 +25,9 @@ const useStyles = makeStyles({
       textDecoration: `none`,
       color: `white`
     },
-    steveClass:{
+    appBarClass:{
       backgroundColor:'#3d9630',
+      position: "relative"
     }
   });
 
@@ -50,7 +41,7 @@ const NavBar = () => {
     // const theme = useTheme()
   return (
     <>
-    <AppBar position="static" className={classes.steveClass}>
+    <AppBar  className={classes.appBarClass}>
         <Toolbar>
         <Container className={classes.navHomeFlex}>    
         <IconButton edge="start" color="inherit" aria-label="Homepage">
@@ -74,17 +65,6 @@ const NavBar = () => {
             </Link>
     
         </Container>
- 
-        {/* <List component="nav" aria-labelledby="main navigation" className={classes.navDisplayFlex} >
-            {navBarLinks.map(({ title, path }) => (
-                <Link href={path} key={title} className={classes.linkText}>
-                <ListItem button>
-                    <ListItemText primary={title} />
-                </ListItem>
-            </Link>
-            ))}
-        </List> */}
-   
         </Toolbar>
     </AppBar>
     </>
