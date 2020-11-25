@@ -1,9 +1,31 @@
 import React, { useState } from "react";
 import { TextField, Button } from "@material-ui/core";
+import { makeStyles, styled } from "@material-ui/core/styles";
 import * as yup from "yup";
 import schema from "../utils/schema.js";
 import {useHistory} from 'react-router-dom'
 import fireApp from '../base'
+
+const useStyles = makeStyles({
+    root: {
+      "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
+        borderColor: "white"
+      },
+      "& .MuiOutlinedInput-input": {
+        color: "white"
+      },
+      "& .MuiInputLabel-outlined": {
+        color: "white"
+      },
+    }
+  });
+
+  const StyledButton = styled(Button)({
+    color: "white",
+    borderColor: "white",
+    width: "100%",
+    size: 'small'
+  });
 
 const defaultValues = {
   email: "",
@@ -20,6 +42,8 @@ const Login = () => {
 
   const [values, setValues] = useState(defaultValues);
   const [errors, setErrors] = useState(defaultErrors);
+
+   const classes = useStyles()
 
   const validate = (name, value) => {
     yup
@@ -66,6 +90,7 @@ const Login = () => {
         margin="dense"
         onChange={onChange}
         value={values.email}
+        className={classes.root}
       />
       <TextField
         type="password"
@@ -78,12 +103,15 @@ const Login = () => {
         margin="dense"
         onChange={onChange}
         value={values.password}
+        className={classes.root}
       />
-      <Button type="submit" variant="outlined" size='small' fullWidth>
+      <StyledButton type="submit" variant="outlined" >
         Sign In
-      </Button>
+      </StyledButton>
     </form>
   );
 };
 
 export default Login;
+
+// style={{ borderColor: 'white', color:'white'}}
