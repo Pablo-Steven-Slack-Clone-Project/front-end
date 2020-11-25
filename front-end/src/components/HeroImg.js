@@ -1,7 +1,7 @@
 import React from "react";
 import { Box } from "@material-ui/core";
 import { withStyles } from "@material-ui/styles";
-import bgImg from "../images/alt-sl:ck.png";
+import bgImg from "../images/logo1.png";
 
 const Img = withStyles({
   root: {
