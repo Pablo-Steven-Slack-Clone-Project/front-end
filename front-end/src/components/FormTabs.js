@@ -13,9 +13,9 @@ const FormTabs = () => {
   return (
     <>
       <TabContext value={tab}>
-        <TabList onChange={onChange}>
-          <Tab label="Sign In" value="1" />
-          <Tab label="Sign Up" value="2" />
+        <TabList onChange={onChange} indicatorColor="blue" >
+          <Tab label="Sign In" value="1" style={{color: "white"}} indicatorColor="blue"  />
+          <Tab label="Sign Up" value="2" style={{color: "white"}}  />
         </TabList>
         <TabPanel value="1">
           <Login />
