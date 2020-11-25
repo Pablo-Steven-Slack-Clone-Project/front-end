@@ -4,12 +4,14 @@ import {Link, useHistory} from 'react-router-dom'
 import { AppBar, IconButton, Toolbar } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles"
 import { Container } from "@material-ui/core"
-import fireApp from '../base'
 
 import CodeIcon from "@material-ui/icons/Code";
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
+import { useAuthState } from 'react-firebase-hooks/auth'
+import fireApp from '../base'
 
+const auth = fireApp.auth()
 
 const useStyles = makeStyles({  
     navDisplayFlex: {
@@ -58,7 +60,8 @@ const NavBar = () => {
       
         <IconButton color="inherit" className={classes.linkText}>
             <ExitToAppIcon fontSize="medium" onClick={() =>{
-              fireApp.auth().signOut()
+              auth.signOut()
+              console.log(auth)
               history.push('/')
             }
             }/>

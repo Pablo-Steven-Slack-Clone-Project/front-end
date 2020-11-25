@@ -66,7 +66,6 @@ const Login = () => {
   const submitLogin = async (evt) => {
         evt.preventDefault();
         const { email, password } = evt.target.elements;
-        console.log('event values', evt.target.elements)
         try {
           await fireApp
             .auth()

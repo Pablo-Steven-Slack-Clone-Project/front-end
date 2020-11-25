@@ -1,21 +1,23 @@
 import React,{useContext} from "react";
-import { Route, Redirect } from "react-router-dom";
+import { Route, Redirect} from "react-router-dom";
 import { AuthContext } from "./Auth"
+import Chatroom from "./ChatRoom";
 
 const PrivateRoute = ({ component: RouteComponent, ...rest }) => {
-  const {currentUser} = useContext(AuthContext)
+const {currentUser} = useContext(AuthContext)
+console.log("currentUSER", !!currentUser, "rest is:", {...rest})
 
-  return (
+  return ( 
     <Route
       {...rest}
       render={routeProps => 
       !!currentUser ? 
         (
-          <RouteComponent {...routeProps} />
+        <Chatroom />
         ) 
       : 
         (
-          <Redirect to="/" />
+        <Redirect to="/" />
         )
       }
     />
