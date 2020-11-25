@@ -1,15 +1,14 @@
 import React from "react";
-import {Link} from 'react-router-dom'
+import {Link, useHistory} from 'react-router-dom'
 
 import { AppBar, IconButton, Toolbar } from "@material-ui/core";
-import { List, ListItem, ListItemText } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles"
 import { Container } from "@material-ui/core"
+import fireApp from '../base'
 
 import CodeIcon from "@material-ui/icons/Code";
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-import AccountCircleIcon from '@material-ui/icons/AccountCircle';
-import zIndex from "@material-ui/core/styles/zIndex";
+
 
 
 const useStyles = makeStyles({  
@@ -33,10 +32,10 @@ const useStyles = makeStyles({
 
 const navBarLinks = [
   { title: "Current Channel", path: "/homepage" },
-  { title: "Logout", path: "/logout" },
 ];
 
 const NavBar = () => {
+    const history = useHistory()
     const classes = useStyles()
     // const theme = useTheme()
   return (
@@ -57,13 +56,15 @@ const NavBar = () => {
             </IconButton>
         </Link>
       
-            <Link href={navBarLinks[1].path} key={navBarLinks[1].title} >
-                <IconButton color="inherit" className={classes.linkText}>
-                    <ExitToAppIcon fontSize="medium" /> {navBarLinks[1].title} <AccountCircleIcon fontSize="medium" />
-                    
-                </IconButton>
-            </Link>
-    
+        <IconButton color="inherit" className={classes.linkText}>
+            <ExitToAppIcon fontSize="medium" onClick={() =>{
+              fireApp.auth().signOut()
+              history.push('/')
+            }
+            }/>
+                        {/* Add logut text and account logo here */}
+        </IconButton>
+        
         </Container>
         </Toolbar>
     </AppBar>

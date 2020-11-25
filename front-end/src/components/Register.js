@@ -2,20 +2,23 @@ import React, { useState } from "react";
 import { TextField, Button } from "@material-ui/core";
 import * as yup from "yup";
 import schema from "../utils/schema.js";
+import fireApp from '../base'
+import {useHistory} from 'react-router-dom'
 
 const defaultValues = {
   email: "",
   password: "",
-  confirmPassword: ""
+
 };
 
 const defaultErrors = {
   email: "",
   password: "",
-  confirmPassword: ""
+ 
 };
 
 const Register = () => {
+  const history = useHistory()
   const [values, setValues] = useState(defaultValues);
   const [errors, setErrors] = useState(defaultErrors);
 
@@ -27,7 +30,6 @@ const Register = () => {
         setErrors({ ...errors, [name]: "" });
       })
       .catch((err) => {
-        console.log(err);
         setErrors({ ...errors, [name]: err.message });
       });
   };
@@ -37,10 +39,20 @@ const Register = () => {
     validate(name, value);
     setValues({ ...values, [name]: value });
   };
-  const onSubmit = (evt) => {
+
+  const onSubmit = async (evt) => {
     evt.preventDefault();
-    delete values.confirmPassword;
-    console.log(values);
+    const {email,password} = values
+    try
+    {
+      await fireApp
+      .auth()
+      .createUserWithEmailAndPassword(email, password)
+      history.push('/chatroom')
+    }
+    catch(error){
+      alert(error)
+    }
   };
   return (
     <form onSubmit={onSubmit}>
@@ -53,7 +65,7 @@ const Register = () => {
         margin="dense"
         onChange={onChange}
         value={values.email}
-        style={{maxWidth: "70%", marginLeft: "15%"}}
+        
       />
       <TextField
         type="password"
@@ -65,21 +77,9 @@ const Register = () => {
         margin="dense"
         onChange={onChange}
         value={values.password}
-        style={{maxWidth: "70%", marginLeft: "15%"}}
+      
       />
-      <TextField
-        type="password"
-        name="confirmPassword"
-        label="Confirm Password"
-        variant="outlined"
-        required
-        fullWidth
-        margin="dense"
-        onChange={onChange}
-        value={values.confirmPassword}
-        style={{maxWidth: "70%", marginLeft: "15%"}}
-      />
-      <Button type="submit" variant="outlined" size="small" fullWidth style={{maxWidth: "70%", marginLeft: "15%"}}>
+     <Button type="submit" variant="outlined" size="small" fullWidth >
         Submit
       </Button>
     </form>

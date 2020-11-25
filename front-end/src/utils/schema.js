@@ -6,5 +6,4 @@ export default yup.object().shape({
     .string()
     .required("Password is required")
     .min(8, "Password must be atleast 8 characters long"),
-  confirmPassword: yup.string()
 });
