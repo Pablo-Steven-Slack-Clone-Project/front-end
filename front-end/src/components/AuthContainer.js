@@ -12,14 +12,14 @@ const FormWrapper = withStyles({
     alignItems: "center",
     width: "50%",
     height: "100vh",
-    background: "#5362ed"
-  }
+    background: "#cc272f"
+  },
 })(Box);
 
 const AuthContainer = () => {
   return (
     <FormWrapper>
-      <h1>Slack Clone</h1>
+      <h1 style ={{color: "white"}}>S&lt;/&gt;ack</h1>
       <FormTabs />
     </FormWrapper>
   );
