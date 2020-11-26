@@ -1,4 +1,3 @@
-
 .marginLeftAdjustment{
   display: flex;
   margin-left: 240px;
@@ -24,13 +23,22 @@
   margin-bottom: 11%; 
   height: 60%;
   overflow: hidden;
+  width:100%;
 }
 .icon img{
-  width: 5%;
+  width: 7%;
   border-radius:15px;
 }
 .text{
   font-size: 1.3rem;
 }
 
-/* style={{ width: '3%', borderRadius:15,}} */
+.received{
+  display: flex;
+  align-items: left;
+}
+
+.sent {
+  display: flex;
+  flex-direction: row-reverse;
+}

@@ -1,8 +1,7 @@
-import React, {useContext, useRef} from "react";
+import React, {useContext} from "react";
 import { AuthContext } from "./Auth"
 import 'firebase/firestore'
 import firebase from 'firebase/app';
-import { useCollectionData } from 'react-firebase-hooks/firestore';
 import { makeStyles, withStyles} from "@material-ui/core/styles";
 import FormatBoldIcon from '@material-ui/icons/FormatBold';
 import FormatItalicIcon from '@material-ui/icons/FormatItalic';
@@ -50,15 +49,11 @@ const StyledToggleButtonGroup = withStyles((theme) => ({
 }))(ToggleButtonGroup);
 
 export default function MessageForm() {
-  const dummy = useRef()
   const messagesRef = firestore.collection('messages');
-  const query = messagesRef.orderBy('createdAt').limit(25);
-  const [messages] = useCollectionData(query, { idField: 'id' });
   const {currentUser} = useContext(AuthContext)
   const classes = useStyles();
   const [formValue, setFormValue] = React.useState("");
   const [formats, setFormats] = React.useState(() => ['italic']);
-  
   
   const handleFormat = (event, newFormats) => {
     setFormats(newFormats);
@@ -75,37 +70,32 @@ export default function MessageForm() {
       uid
     })
     setFormValue('');
-    dummy.current.scrollIntoView({ behavior: 'smooth' });
   }
 
   const tempName = "to Steve";
 
   return (
     <>
-    <main>
-      <span ref={dummy}></span>
-    </main>
-
     <form className={classes.root} autoComplete="off" onSubmit={handleSendMsg}>
-    <Paper elevation={0} className={classes.paper}>
-    <TextField
-    id="outlined-multiline-static"
-    label={`Message ${tempName}`}
-    value={formValue}
-    onChange={(e) => setFormValue(e.target.value)}
-    multiline
-    fullWidth
-    rows={2}
-    variant="outlined"
-    />      
-    <Button type="submit" disabled={!formValue} variant="contained" color="primary"className={classes.button}>Send<SendIcon/></Button>
-    </Paper>
-    <StyledToggleButtonGroup
-    size="small"
-    value={formats}
-    onChange={handleFormat}
-    aria-label="text formatting"
-  >
+      <Paper elevation={0} className={classes.paper}>
+        <TextField
+          id="outlined-multiline-static"
+          label={`Message ${tempName}`}
+          value={formValue}
+          onChange={(e) => setFormValue(e.target.value)}
+          multiline
+          fullWidth
+          rows={2}
+          variant="outlined"
+        />      
+          <Button type="submit" disabled={!formValue} variant="contained" color="primary"className={classes.button}>Send<SendIcon/></Button>
+      </Paper>
+      <StyledToggleButtonGroup
+        size="small"
+        value={formats}
+        onChange={handleFormat}
+        aria-label="text formatting"
+      >
     <ToggleButton value="bold" aria-label="bold">
       <FormatBoldIcon />
     </ToggleButton>
