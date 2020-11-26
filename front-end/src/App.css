@@ -2,3 +2,7 @@
 .marginLeftAdjustment{
   margin-left: 240px;
 }
+
+.controlHeight{
+  position: sticky;
+}
