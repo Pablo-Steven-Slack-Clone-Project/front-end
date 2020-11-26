@@ -1,7 +1,9 @@
 
 .marginLeftAdjustment{
+  display: flex;
   margin-left: 240px;
-}
+ 
+  }
 
 .navbar{
   overflow: hidden;
@@ -11,12 +13,24 @@
 }
 .messagebar{
   overflow: hidden;
+  background-color: rgb(255, 255, 255);
   position: fixed; /* Set the navbar to fixed position */
   bottom: 0; /* Position the navbar at the bottom of the page */
   width: 100%;
 }
 
 .mainchat {
+  margin-top: 5%;
+  margin-bottom: 11%; 
   height: 60%;
   overflow: hidden;
 }
+.icon img{
+  width: 5%;
+  border-radius:15px;
+}
+.text{
+  font-size: 1.3rem;
+}
+
+/* style={{ width: '3%', borderRadius:15,}} */
