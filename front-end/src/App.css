@@ -3,6 +3,20 @@
   margin-left: 240px;
 }
 
-.controlHeight{
-  position: sticky;
+.navbar{
+  overflow: hidden;
+  position: fixed; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
+  width: 100%;
+}
+.messagebar{
+  overflow: hidden;
+  position: fixed; /* Set the navbar to fixed position */
+  bottom: 0; /* Position the navbar at the bottom of the page */
+  width: 100%;
+}
+
+.mainchat {
+  height: 60%;
+  overflow: hidden;
 }

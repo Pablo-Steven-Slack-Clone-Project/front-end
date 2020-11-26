@@ -25,8 +25,8 @@ function ChatMessage(props) {
 
   return (<>
     <div className={`message ${messageClass}`}>
-      <img src={photoURL || 'https://media-exp1.licdn.com/dms/image/C4D03AQE4tHxILDIRTA/profile-displayphoto-shrink_200_200/0?e=1610582400&v=beta&t=UqBSpNh_OnwIzDTX04QJTkoPFqqI7phAGy0SuzvsJSA'} alt="stock" />
-      <p>{text}</p>
+      <img style={{ width: '3%', borderRadius:15,}} src={photoURL || 'https://media-exp1.licdn.com/dms/image/C4D03AQE4tHxILDIRTA/profile-displayphoto-shrink_200_200/0?e=1610582400&v=beta&t=UqBSpNh_OnwIzDTX04QJTkoPFqqI7phAGy0SuzvsJSA'} alt="stock" />
+      <span style={{}}>{text}</span>
     </div>
   </>)
 }

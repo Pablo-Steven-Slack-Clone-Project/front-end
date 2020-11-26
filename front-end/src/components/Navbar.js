@@ -8,7 +8,6 @@ import { Container } from "@material-ui/core"
 import CodeIcon from "@material-ui/icons/Code";
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
-import { useAuthState } from 'react-firebase-hooks/auth'
 import fireApp from '../base'
 
 const auth = fireApp.auth()
