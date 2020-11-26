@@ -1,62 +1,34 @@
-import React from "react";
-import makeStyles from "@material-ui/core/styles/makeStyles";
+import React, { useContext } from "react";
+import { useCollectionData } from 'react-firebase-hooks/firestore';
+import { AuthContext } from "./Auth"
+import fireApp from '../base.js'
+const firestore = fireApp.firestore();
 
-const useStyles = makeStyles((theme) => ({
-    mainChatContainer: {
-        position: "relative",
-        border: "0.5px solid black",
-        paddingBottom: "20%",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "flex-start"
-    },
-     bubbleContainer: {
-        width: "100%",
-        display: "flex",
-        margin: "0 auto",
-        
-    },
-    bubble: {
-        // border: "0.5px solid black",
-        // borderRadius: "10px",
-        margin: "1px",
-        padding: "10px",
-        display: "inline-block"
-    }
-}));
+
 const MainChat = () => {
-  const classes = useStyles();
-  const dummyData = [
-    {
-        user: "Steven",
-        message: "Someone please hire me",
-    },
-    {
-        user: "Pablo",
-        message: "Not with Lambda as your background",
-    },
-    {
-        user: "Steven",
-        message: "So true!",
-    },
-    {
-        user: "Austen",
-        message: "LMAO I'M RICH!",
-    }
-  ];
+  const messagesRef = firestore.collection('messages');
+  const query = messagesRef.orderBy('createdAt').limit(25);
+  const [messages] = useCollectionData(query, { idField: 'id' });
+  // console.log("these are the messages", messages)
 
-  const chatBubbles = dummyData.map((obj, i = 0) => (
-    <div className={`${classes.bubbleContainer}`} key={i}>
-      <div key={i++} className={classes.bubble}>
-        <div className={classes.button}>{obj.user}:<br />{obj.message}</div>
-      </div>
-    </div>
-  ));
-  return (
-    <div className={classes.mainChatContainer}>
-        {chatBubbles}
-    </div>
-  )
+  return (<>
+    <main>
+      {messages && messages.map(msg => <ChatMessage key={msg.id} message={msg} />)}
+    </main>
+  </>)
 };
+
+function ChatMessage(props) {
+  const { text, uid, photoURL } = props.message;
+  const messageClass = uid === useContext(AuthContext).uid ? 'sent' : 'received';
+  console.log('chat message current user', useContext(AuthContext))
+
+  return (<>
+    <div className={`message ${messageClass}`}>
+      <img src={photoURL || 'https://media-exp1.licdn.com/dms/image/C4D03AQE4tHxILDIRTA/profile-displayphoto-shrink_200_200/0?e=1610582400&v=beta&t=UqBSpNh_OnwIzDTX04QJTkoPFqqI7phAGy0SuzvsJSA'} alt="stock" />
+      <p>{text}</p>
+    </div>
+  </>)
+}
 
 export default MainChat;
