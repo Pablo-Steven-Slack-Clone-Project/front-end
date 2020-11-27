@@ -1,3 +1,4 @@
+
 .marginLeftAdjustment{
   display: flex;
   margin-left: 240px;
@@ -23,9 +24,9 @@
   margin-bottom: 11%; 
   margin-left:1%;
   margin-right:2%;
-  height: 60%;
+  height: 50%;
   overflow: hidden;
-  bottom: 140; /* Position the navbar at the bottom of the page */
+  bottom: 110; /* Position the navbar at the bottom of the page */
   width:98%;
 }
 
@@ -48,4 +49,21 @@
   width: 25px;
   height: 30px;
   border-radius:15px;
+}
+
+.images {
+  display: flex;
+}
+
+.senderImage {
+  margin: 0 auto;
+  margin-top: 15%;
+  width: 120%;
+  margin-left: -8%;
+}
+
+@media(max-width: 800px){
+  .senderImage {
+    margin-top: 90%;
+  }
 }

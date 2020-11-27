@@ -12,14 +12,15 @@ const FormWrapper = withStyles({
     alignItems: "center",
     width: "50%",
     height: "100vh",
-    background: "#cc272f"
+    background: "#cc272f",
   },
 })(Box);
 
 const AuthContainer = () => {
   return (
     <FormWrapper>
-      <h1 style ={{color: "white"}}>S&lt;/&gt;ack</h1>
+      <h1 style ={{color: "white", fontSize: "5rem", margin: "0"}}>S&lt;/&gt;ack</h1>
+      <h2 style ={{color: "white", fontSize: "1rem", marginBottom: "12%"}}>Come with bugs, leave with friends</h2>
       <FormTabs />
     </FormWrapper>
   );
