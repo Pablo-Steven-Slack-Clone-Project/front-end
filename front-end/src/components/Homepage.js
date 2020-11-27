@@ -6,7 +6,8 @@ import AuthContainer from "./AuthContainer";
 
 const HomeWrapper = withStyles({
   root: {
-    display: "flex"
+    display: "flex",
+    alignItems: "center"
   }
 })(Box);
 

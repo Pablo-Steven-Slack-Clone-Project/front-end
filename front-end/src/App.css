@@ -42,3 +42,20 @@
   display: flex;
   flex-direction: row-reverse;
 }
+
+.images {
+  display: flex;
+}
+
+.senderImage {
+  margin: 0 auto;
+  margin-top: 15%;
+  width: 120%;
+  margin-left: -8%;
+}
+
+@media(max-width: 800px){
+  .senderImage {
+    margin-top: 90%;
+  }
+}
