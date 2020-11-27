@@ -15,6 +15,7 @@ import SendIcon from '@material-ui/icons/Send';
 import AttachFileIcon from '@material-ui/icons/AttachFile';
 import CodeIcon from "@material-ui/icons/Code";
 import EmojiEmotionsIcon from '@material-ui/icons/EmojiEmotions';
+
 import fireApp from '../base.js'
 const firestore = fireApp.firestore();
 
@@ -22,6 +23,9 @@ const firestore = fireApp.firestore();
 const useStyles = makeStyles((theme) => ({
     button: {
         margin: theme.spacing(1),
+        display:'flex',
+        alignItems:'right',
+        flexDirection:'row-reverse'
       },
   paper: {
     display: 'flex',
@@ -31,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     "& .MuiTextField-root": {
       margin: theme.spacing(1),
-      width: "65ch"
+      width: "60ch"
     }
   }
 }));
@@ -72,7 +76,7 @@ export default function MessageForm() {
     setFormValue('');
   }
 
-  const tempName = "to Steve";
+  const tempName = "Message";
 
   return (
     <>
@@ -80,7 +84,7 @@ export default function MessageForm() {
       <Paper elevation={0} className={classes.paper}>
         <TextField
           id="outlined-multiline-static"
-          label={`Message ${tempName}`}
+          label={`Send a ${tempName}`}
           value={formValue}
           onChange={(e) => setFormValue(e.target.value)}
           multiline
@@ -88,7 +92,7 @@ export default function MessageForm() {
           rows={2}
           variant="outlined"
         />      
-          <Button type="submit" disabled={!formValue} variant="contained" color="primary"className={classes.button}>Send<SendIcon/></Button>
+        <Button type="submit" disabled={!formValue} variant="contained" color="primary"className={classes.button}>Send<SendIcon/></Button>
       </Paper>
       <StyledToggleButtonGroup
         size="small"
@@ -96,6 +100,7 @@ export default function MessageForm() {
         onChange={handleFormat}
         aria-label="text formatting"
       >
+
     <ToggleButton value="bold" aria-label="bold">
       <FormatBoldIcon />
     </ToggleButton>

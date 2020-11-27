@@ -1,3 +1,4 @@
+
 .marginLeftAdjustment{
   display: flex;
   margin-left: 240px;
@@ -21,26 +22,33 @@
 .mainchat {
   margin-top: 5%;
   margin-bottom: 11%; 
-  height: 60%;
+  margin-left:1%;
+  margin-right:2%;
+  height: 50%;
   overflow: hidden;
-  width:100%;
+  bottom: 110; /* Position the navbar at the bottom of the page */
+  width:98%;
 }
-.icon img{
-  width: 7%;
-  border-radius:15px;
-}
+
 .text{
   font-size: 1.3rem;
 }
 
 .received{
+  color:rgb(8, 31, 105);
   display: flex;
-  align-items: left;
+  flex-direction: row-reverse;
 }
 
 .sent {
   display: flex;
-  flex-direction: row-reverse;
+  align-items: right;
+}
+
+.icon img{
+  width: 25px;
+  height: 30px;
+  border-radius:15px;
 }
 
 .images {

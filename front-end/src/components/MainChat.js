@@ -48,12 +48,13 @@ function ChatMessage(props) {
    }
   
   return (<>
+
       <div className={`${messageClass}`}>
-     
-      <span className='text'>{text}</span>
       <div className="icon" >
       <img src={photoHolder} alt="stock" />
       </div>
+  <span className='text'>{text}</span>
+      
       
       </div>
   </>)
