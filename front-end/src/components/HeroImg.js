@@ -6,7 +6,6 @@ import senderImg from '../images/senderimg.png'
 
 const Img = withStyles({
   root: {
-    // backgroundImage: `url(${bgImg})`,
     backgroundColor: `#f2e5e4`,
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat",
