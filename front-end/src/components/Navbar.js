@@ -13,13 +13,9 @@ import fireApp from '../base'
 const auth = fireApp.auth()
 
 const useStyles = makeStyles({  
-    navDisplayFlex: {
-      display: `flex`,
-      justifyContent: `space-evenly`
-    },
     navHomeFlex: {
         display: `flex`,
-        justifyContent: `space-between`
+        justifyContent: `space-around`,
       },
       linkText: {
       textDecoration: `none`,
@@ -27,7 +23,8 @@ const useStyles = makeStyles({
     },
     appBarClass:{
       backgroundColor:'#3d9630',
-      position: "relative"
+      position: "relative",
+      width: `calc(100% - 240px)`,
     }
   });
 
@@ -38,7 +35,6 @@ const navBarLinks = [
 const NavBar = () => {
     const history = useHistory()
     const classes = useStyles()
-    // const theme = useTheme()
   return (
     <>
     <AppBar  className={classes.appBarClass}>
