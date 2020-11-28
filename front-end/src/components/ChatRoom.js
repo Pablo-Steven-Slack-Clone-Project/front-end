@@ -8,9 +8,13 @@ const Chatroom = () => {
     return (
         <>
         <div className="marginLeftAdjustment">
-        <NavBar />
-        <MainChat />
+        <div className="navbar">
+        <NavBar /> 
+        </div>
+        <div className="mainchat"><MainChat /></div>
+        <div className="messagebar">
         <MessageForm />
+        </div>
         </div>
         <ChannelBar />
         </>

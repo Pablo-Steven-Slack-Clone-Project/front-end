@@ -23,8 +23,11 @@ const useStyles = makeStyles({
   const StyledButton = styled(Button)({
     color: "white",
     borderColor: "white",
-    width: "100%",
-    size: 'small'
+    width: "30%",
+    size: 'small',
+    marginTop: "4%",
+    display: "block",
+    margin: "0 auto",
   });
 
 const defaultValues = {
@@ -103,8 +106,8 @@ const Login = () => {
         onChange={onChange}
         value={values.password}
         className={classes.root}
-      />
-      <StyledButton type="submit" variant="outlined" >
+      /> <br />
+      <StyledButton type="submit" variant="outlined" styles={{'&:hover': { backgroundColor: 'black' }}}  >
         Sign In
       </StyledButton>
     </form>
