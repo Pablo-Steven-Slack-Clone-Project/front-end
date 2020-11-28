@@ -2,8 +2,6 @@ import firebase from "firebase/app";
 import "firebase/auth"
 import 'firebase/firestore'
 
-import { useCollectionData } from 'react-firebase-hooks/firestore'
-
 //export const firestore = firebase.firestore();
 
 // const fireApp = firebase.initializeApp({
