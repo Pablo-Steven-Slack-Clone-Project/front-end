@@ -20,8 +20,8 @@
 }
 
 .mainchat {
-  margin-top: 5%;
-  margin-bottom: 11%; 
+  margin-top: 100px;
+  margin-bottom: 200px;
   margin-left:1%;
   margin-right:2%;
   height: 50%;
@@ -60,6 +60,10 @@
   margin-top: 15%;
   width: 120%;
   margin-left: -8%;
+}
+
+.channelfix{
+  display: inline-block;
 }
 
 @media(max-width: 800px){

@@ -13,30 +13,27 @@ import AddIcon from '@material-ui/icons/Add';
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
-//   root: {
-//     display: 'flex',
-//   },
+  root: {
+    position: 'absolute',
+    marginLeft: `calc(100% - ${drawerWidth}px)`,
+  },
   appBar: {
     width: `calc(100% - ${drawerWidth}px)`,
     marginLeft: drawerWidth,
   },
   drawer: {
     width: drawerWidth,
-    // flexShrink: 0,
   },
   drawerPaper: {
     width: drawerWidth,
   },
   wrapIcon: {
-    // display: 'flex',
     alignItems: 'center',
-    // flexWrap: 'wrap',
     fontWeight: "bold",
     fontSize: "1.5rem"
    },
   toolbar: theme.mixins.toolbar,
   content: {
-    // flexGrow: 1,
     backgroundColor: theme.palette.background.default,
     padding: theme.spacing(3),
   },
