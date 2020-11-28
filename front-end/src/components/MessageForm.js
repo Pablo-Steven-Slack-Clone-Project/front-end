@@ -66,12 +66,13 @@ export default function MessageForm() {
   const handleSendMsg = async (e) =>{
     e.preventDefault()
 
-    const {uid} = currentUser
+    const {uid, photoURL} = currentUser
 
     await messagesRef.add({
       text:formValue,
       createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-      uid
+      uid,
+      photoURL
     })
     setFormValue('');
   }

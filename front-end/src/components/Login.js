@@ -4,6 +4,7 @@ import { makeStyles, styled } from "@material-ui/core/styles";
 import * as yup from "yup";
 import schema from "../utils/schema.js";
 import {useHistory} from 'react-router-dom'
+import firebase from "firebase/app";
 import fireApp from '../base'
 
 const useStyles = makeStyles({
@@ -79,8 +80,34 @@ const Login = () => {
           alert(error);
         }
       }
+
+  const signInWithGithub = (e) => {
+    e.preventDefault()
+    const provider = new firebase.auth.GithubAuthProvider();
+
+    provider.setCustomParameters({
+      "redirect_uri": "https://slackcloners.vercel.app/chatroom"
+    })
+  
+    firebase.auth().signInWithPopup(provider)
+    .then(res => {
+      const token = res.credential.accessToken //GitHub API token
+      console.log(token)
+      const user = res.user // signed-in user info
+      console.log(user);
+    })
+    .then(res => history.push("/chatroom"))
+    .catch(error => {
+      const errorCode = error.code
+      console.log(errorCode)
+      const errorMessage = error.message
+      console.log(errorMessage)
+    })
+  }
     
   return (
+    <>
+    <button onClick={signInWithGithub}>Sign in with GitHub</button>
     <form onSubmit={submitLogin}>
       <TextField
         name="email"
@@ -111,6 +138,7 @@ const Login = () => {
         Sign In
       </StyledButton>
     </form>
+    </>
   );
 };
 
