@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 import { TabContext, TabList, TabPanel } from "@material-ui/lab";
-import { withStyles } from "@material-ui/styles";
+// import { withStyles } from "@material-ui/styles";
 import { Tab } from "@material-ui/core";
 import Register from "./Register.js";
 import Login from "./Login.js";
 
-const NewTab = withStyles({
-  root: {
-    primary: "black",
-    secondary: "black"
-  }
-})(Tab);
+// const NewTab = withStyles({
+//   root: {
+//     primary: "black",
+//     secondary: "black"
+//   }
+// })(Tab);
 
 const FormTabs = () => {
   const [tab, setTab] = useState("1");
