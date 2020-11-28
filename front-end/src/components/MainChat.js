@@ -36,11 +36,11 @@ const MainChat = () => {
 };
 
 function ChatMessage(props) {
-  const { text, uid, photoURL } = props.message;
+  const { text, uid } = props.message;
   let photoHolder
   const messageClass = uid === useContext(AuthContext).currentUser.uid? 'sent' : 'received';
   if(messageClass==='received')
-  {
+  { 
     photoHolder='https://avatars1.githubusercontent.com/u/51976194?s=460&u=44b1c04deb6995b58523c9192945fe1ca646fe6c&v=4'
   }
   else{
