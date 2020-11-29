@@ -56,8 +56,17 @@ const ChannelBar = () => {
   const [modalStyle] = useState(getModalStyle);
   const [formVal, setFormVal] = useState({name: ""});
   const [open, setOpen] = useState(false);
-  const [newChannel, setNewChannel] = useState()
+  const [channels, setChannels] = useState()
   const channelsRef = firestore.collection('channels')
+  
+  const collectionNames = firestore.collection('channels').onSnapshot((querySnapshot) => {
+    querySnapshot.forEach((doc) => {
+      console.log(doc.id)
+    })
+  })
+
+  console.log(collectionNames)
+
 
   const handleOpen = (e) => {
     setOpen(true)
@@ -72,11 +81,13 @@ const ChannelBar = () => {
     e.preventDefault();
     console.log('this is the data:', formVal)
     setOpen(false)
-    setNewChannel(formVal)
-    console.log("NEW CHANNEL", newChannel)
+    setChannels(...channels, formVal)
+    console.log("NEW CHANNEL", channels)
 
     await channelsRef.doc(formVal.name).set(formVal)
-    .then(res =>  channelsRef.doc(formVal.name).collection('messages'))
+    await channelsRef.doc(formVal.name).collection('messages').doc('messages').set({
+      text: 'test message',
+    })
 
     setFormVal({name: ''})
     }
@@ -130,7 +141,7 @@ const ChannelBar = () => {
             </div>
 		    </Modal>
         <List>
-          {['For the Horde', 'LOFR Stuff', 'Steves House', 'Pablos Den'].map((text, index) => (
+          {collectionNames.map((text, index) => (
             <ListItem button key={text}>
               <ListItemText primary={text} />
             </ListItem>
