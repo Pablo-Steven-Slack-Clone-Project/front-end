@@ -13,7 +13,6 @@ const MainChat = () => {
   const messagesRef = firestore.collection('messages');
   const query = messagesRef.orderBy('createdAt').limitToLast(25)
   const [messages] = useCollectionData(query, { idField: 'id' });
-  console.log(messages)
 
   useEffect(() => {
     setTimeout(()=>{

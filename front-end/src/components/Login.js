@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { TextField, Button } from "@material-ui/core";
 import { makeStyles, styled } from "@material-ui/core/styles";
+import GitHubIcon from '@material-ui/icons/GitHub';
 import * as yup from "yup";
 import schema from "../utils/schema.js";
 import {useHistory} from 'react-router-dom'
@@ -18,6 +19,10 @@ const useStyles = makeStyles({
       "& .MuiInputLabel-outlined": {
         color: "white"
       },
+    },
+    github:{
+      color:"white",
+      borderColor: "white",
     }
   });
 
@@ -84,30 +89,26 @@ const Login = () => {
   const signInWithGithub = (e) => {
     e.preventDefault()
     const provider = new firebase.auth.GithubAuthProvider();
-
     provider.setCustomParameters({
-      "redirect_uri": "https://slackcloners.vercel.app/chatroom"
+      "redirect_uri": `${document.URL}/chatroom` // Document.url grabs whatever the url/domain we're at
     })
   
     firebase.auth().signInWithPopup(provider)
     .then(res => {
-      const token = res.credential.accessToken //GitHub API token
-      console.log(token)
-      const user = res.user // signed-in user info
-      console.log(user);
+      // const token = res.credential.accessToken //GitHub API token
+      // const user = res.user // signed-in user info
     })
-    .then(res => history.push("/chatroom"))
     .catch(error => {
       const errorCode = error.code
-      console.log(errorCode)
       const errorMessage = error.message
-      console.log(errorMessage)
     })
+    setTimeout(() => { history.push("/chatroom"); }, 4300) // Push user to chat room if they use git hub after 5.3 seconds
   }
     
   return (
     <>
-    <button onClick={signInWithGithub}>Sign in with GitHub</button>
+       
+    {/* <button onClick={signInWithGithub}>Sign in with GitHub</button> */}
     <form onSubmit={submitLogin}>
       <TextField
         name="email"
@@ -134,9 +135,19 @@ const Login = () => {
         value={values.password}
         className={classes.root}
       /> <br />
-      <StyledButton type="submit" variant="outlined" styles={{'&:hover': { backgroundColor: 'black' }}}  >
+      <StyledButton type="submit" variant="outlined" styles={{'&:hover': { backgroundColor: 'black' }}}>
         Sign In
       </StyledButton>
+      <br></br>
+      <Button
+        variant="outlined"
+        className={classes.github}
+        fullWidth
+        startIcon={<GitHubIcon />}
+        onClick={signInWithGithub}
+      >
+        Sign in with GitHub
+      </Button>
     </form>
     </>
   );

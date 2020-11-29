@@ -23,7 +23,4 @@ const fireApp = firebase.initializeApp({
     appId: "1:902098712309:web:033167eae4500a3d2a37bc",
 })
 
-console.log("name", fireApp.name)
-
-
 export default fireApp;

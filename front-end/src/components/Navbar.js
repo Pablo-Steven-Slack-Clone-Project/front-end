@@ -56,7 +56,6 @@ const NavBar = () => {
         <IconButton color="inherit" className={classes.linkText}>
             <ExitToAppIcon fontSize="medium" onClick={() =>{
               auth.signOut()
-              console.log(auth)
               history.push('/')
             }
             }/>

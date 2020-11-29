@@ -5,7 +5,6 @@ import Chatroom from "./ChatRoom";
 
 const PrivateRoute = ({ component: RouteComponent, ...rest }) => {
 const {currentUser} = useContext(AuthContext)
-console.log("currentUSER", !!currentUser, "rest is:", {...rest})
 
   return ( 
     <Route
