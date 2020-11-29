@@ -72,14 +72,13 @@ const ChannelBar = () => {
     e.preventDefault();
     console.log('this is the data:', formVal)
     setOpen(false)
-    setFormVal(e.target.value)
     setNewChannel(formVal)
+    console.log("NEW CHANNEL", newChannel)
 
-    // const { name } = newChannel
-    // await channelsRef.add({
-    //     name
-    // })
-    setFormVal('')
+    await channelsRef.doc(formVal.name).set(formVal)
+    .then(res =>  channelsRef.doc(formVal.name).collection('messages'))
+
+    setFormVal({name: ''})
     }
 
     const handleChanges = (e) => {
@@ -118,7 +117,7 @@ const ChannelBar = () => {
             <TextField
                 name="name"
                 onChange={handleChanges}
-                value={formVal}
+                value={formVal.name}
                 id="outlined-basic"
                 variant="outlined"
                 label="Channel Name"
