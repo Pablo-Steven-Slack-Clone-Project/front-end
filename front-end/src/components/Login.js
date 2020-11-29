@@ -97,12 +97,13 @@ const Login = () => {
     .then(res => {
       // const token = res.credential.accessToken //GitHub API token
       // const user = res.user // signed-in user info
+      setTimeout(() => { history.push("/chatroom"); }, 1300) // Push user to chat room if they use git hub after 1.3 seconds
     })
     .catch(error => {
       // const errorCode = error.code
       // const errorMessage = error.message
     })
-    setTimeout(() => { history.push("/chatroom"); }, 4300) // Push user to chat room if they use git hub after 5.3 seconds
+
   }
     
   return (
@@ -155,4 +156,3 @@ const Login = () => {
 
 export default Login;
 
-// style={{ borderColor: 'white', color:'white'}}
