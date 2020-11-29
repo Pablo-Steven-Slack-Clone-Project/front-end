@@ -54,7 +54,7 @@ const StyledToggleButtonGroup = withStyles((theme) => ({
 }))(ToggleButtonGroup);
 
 export default function MessageForm() {
-  const messagesRef = firestore.collection('messages');
+  const messagesRef = firestore.collection('channels').doc('initial_chat').collection('messages');
   const {currentUser} = useContext(AuthContext)
   const classes = useStyles();
   const [formValue, setFormValue] = React.useState("");
