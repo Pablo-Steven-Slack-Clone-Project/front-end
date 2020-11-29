@@ -99,8 +99,8 @@ const Login = () => {
       // const user = res.user // signed-in user info
     })
     .catch(error => {
-      const errorCode = error.code
-      const errorMessage = error.message
+      // const errorCode = error.code
+      // const errorMessage = error.message
     })
     setTimeout(() => { history.push("/chatroom"); }, 4300) // Push user to chat room if they use git hub after 5.3 seconds
   }
